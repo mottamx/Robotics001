@@ -25,7 +25,7 @@ theta_1, theta_2,d_3, theta_4 = \
     sp.symbols('theta_1, theta_2, d_3, theta_4')
 
 #De la tabla
-T01 = T.subs({d: 0.160, a: 0.350, alpha: 0}) 
+T01 = T.subs({d: 0.160, a: 0.350, alpha: 0})
 T01 = T01.subs({theta: theta_1})
 # sp.pprint(T01)
 
@@ -33,15 +33,15 @@ T12 = T.subs({d: 0, a: 0.300, alpha: 0})
 T12 = T12.subs({theta: theta_2})
 # sp.pprint(T12)
 
-T23 = T.subs({theta: 0, a: 0.0, alpha: sp.pi}) 
+T23 = T.subs({theta: 0, a: 0.0, alpha: sp.pi})
 T23 = T23.subs({d: d_3}) #Recordar el -0.210
 # sp.pprint(T23)
 
-T34 = T.subs({d: 0.0, a: 0, alpha: 0}) 
+T34 = T.subs({d: 0.0, a: 0, alpha: 0})
 T34 = T34.subs({theta: theta_4})
 # sp.pprint(T34)
 
-T04 = T01 @ T12 @ T23 @ T34 
+T04 = T01 @ T12 @ T23 @ T34
 T04_s= T04.applyfunc(sp.simplify)
 # sp.pprint(T04_s)
 
