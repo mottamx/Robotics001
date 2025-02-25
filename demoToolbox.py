@@ -1,6 +1,8 @@
 import roboticstoolbox as rtb
 import spatialmath.base as smb
 import spatialmath as sm
+import numpy as np
+np.set_printoptions(suppress=True, precision=4)
 
 # Crear instancia del Puma560
 p560 = rtb.models.DH.Puma560()
@@ -15,23 +17,32 @@ print(T, "\n")
 # Graficar la matriz (sobre el robot)
 smb.trplot(T.A, block=True)
 
-# #Calcular la cinemática inversa para la matriz de transformación T
-# q = p560.ikine_a(T) #Default: izquierda codo arriba
-# print(f"Izq, codo arriba {q.q}")
-# #Mostrar robot en posicion calculada
-# p560.plot(q.q, block=True)
+#Calcular la cinemática inversa para la matriz de transformación T
+q = p560.ikine_a(T) #Default: izquierda codo arriba
+print(f"Izq, codo arriba\n {q.q}")
+#En grados
+print(f"Izq, codo arriba grados:\n {np.rad2deg(q.q)}")
+#Mostrar robot en posicion calculada
+p560.plot(q.q, block=True)
 
 # #Calcular inversa con configuración derecha, codo arriba
-# q = p560.ikine_a(T, config = 'ru')
-# print(f"Der, codo arriba {q.q}")
-# p560.plot(q.q, block=True)
+q = p560.ikine_a(T, config = 'ru')
+print(f"Der, codo arriba\n {q.q}")
+#En grados
+print(f"Der, codo arriba grados:\n {np.rad2deg(q.q)}")
+p560.plot(q.q, block=True)
 
-# #Calcular inversa con configuración derecha, codo abajo
-# q = p560.ikine_a(T, config = 'rd')
-# print(f"Der, codo abajo {q.q}")
-# p560.plot(q.q, block=True)
+#Calcular inversa con configuración derecha, codo abajo
+q = p560.ikine_a(T, config = 'rd')
+print(f"Der, codo abajo {q.q}")
+#En grados
+print(f"Der, codo abajo grados:\n {np.rad2deg(q.q)}")
+p560.plot(q.q, block=True)
 
-# #Calcular inversa con configuración izquierda, codo abajo
-# q = p560.ikine_a(T, config = 'ld')
-# print(f"Izq, codo abajo{q.q}")
-# p560.plot(q.q, block=True)
+#Calcular inversa con configuración izquierda, codo abajo
+q = p560.ikine_a(T, config = 'ld')
+print(f"Izq, codo abajo{q.q}")
+#En grados
+print(f"Izq, codo abajo grados:\n {np.rad2deg(q.q)}")
+p560.plot(q.q, block=True)
+
