@@ -25,7 +25,7 @@ robot.qz=[np.deg2rad(0),np.deg2rad(0),np.deg2rad(0),np.deg2rad(0),np.deg2rad(0),
 # robot.teach(robot.qz)
 
 T_inicial = robot.fkine(robot.qz)
-print(f"Matriz de posición inicial:\n{T_inicial}")
+# print(f"Matriz de posición inicial:\n{T_inicial}")
 
 # # Crear una nueva matriz de transformación destino
 # R_down = np.array([
@@ -35,7 +35,7 @@ print(f"Matriz de posición inicial:\n{T_inicial}")
 # ])
 #Roll 180 en X, Pitch 0 en Y, Yaw 0 en Z
 T_destino = SE3.Trans(0.848, -0.0, 0.28) * SE3(rpy2tr(180.0, 0.142, 0.0, 'deg'))
-print("Matriz T_destino:\n", T_destino, "\n")
+# print("Matriz T_destino:\n", T_destino, "\n")
 
 #Para mantener codo arriba
 q_inicial = np.array([0, np.deg2rad(45), np.deg2rad(90), 0, np.deg2rad(0), 0])
