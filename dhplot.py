@@ -1,11 +1,11 @@
-import sympy as sp
+import sympy as sp #1.13.3
 from sympy.matrices import rot_axis3
 # Para el ejemplo donde generamos la matriz DH
-from spatialmath import *
+from spatialmath import * #1.1.14
 from spatialmath.base import *
 # Para poder Graficar
-import matplotlib.pyplot as plt
-import numpy as np
+import matplotlib.pyplot as plt #3.8.3
+import numpy as np #1.26.4
 
 # Definir los símbolos
 theta, d, a, alpha = sp.symbols('theta, d, a, alpha')
@@ -23,7 +23,7 @@ theta_1, theta_2,theta_3, theta_4,theta_5, theta_6  = \
     sp.symbols('theta_1, theta_2,theta_3, theta_4,theta_5, theta_6')
 
 #De la tabla
-T01 = T.subs({d: 0.680, a: 0.200, alpha: -sp.pi/2}) 
+T01 = T.subs({d: 0.680, a: 0.200, alpha: -sp.pi/2})
 T01 = T01.subs({theta: theta_1})
 # sp.pprint(T01)
 T12 = T.subs({d: 0, a: 0.890, alpha: 0}) #theta2-sp.pi/2
@@ -32,7 +32,7 @@ T12 = T12.subs({theta: theta_2})
 T23 = T.subs({d: 0, a: 0.150, alpha: -sp.pi/2})
 T23 = T23.subs({theta: theta_3})
 # sp.pprint(T23)
-T34 = T.subs({d: 0.880, a: 0, alpha: sp.pi/2}) 
+T34 = T.subs({d: 0.880, a: 0, alpha: sp.pi/2})
 T34 = T34.subs({theta: theta_4})
 # sp.pprint(T34)
 T45 = T.subs({d: 0, a: 0, alpha: -sp.pi/2})
@@ -42,7 +42,7 @@ T56 = T.subs({d: 0.140, a: 0, alpha: 0})
 T56 = T56.subs({theta: theta_6})
 # sp.pprint(T56)
 
-T06 = T01 @ T12 @ T23 @ T34 @ T45 @ T56  
+T06 = T01 @ T12 @ T23 @ T34 @ T45 @ T56
 # T06_s= T06.applyfunc(sp.simplify)
 #sp.pprint(T06_s)
 
@@ -93,8 +93,8 @@ trplot(T06_n, length=0.7, color='c', frame='6')
 T06_n = np.array(T06_solved).astype(np.float64)
 trplot(T06_n, length=0.7, color='purple', frame='f', width=2.0)
 
-plt.grid(True)  
-plt.title('Brazo iRB4400')  
+plt.grid(True)
+plt.title('Brazo iRB4400')
 plt.axis('equal')
 plt.show()
 
