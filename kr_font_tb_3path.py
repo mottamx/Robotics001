@@ -107,14 +107,14 @@ ax = env.ax
 
 # Crear un plano para representar la superficie de escritura
 # Definir las coordenadas del plano (un rectángulo en el plano XZ)
-y_plane = y_fixed  # Posición fija en Y donde se escribe
-x_min, x_max = -0.5, 1.5  # Límites en X (ajustar según sea necesario)
-z_min, z_max = 0.5, 1.2   # Límites en Z
+# y_plane = y_fixed  # Posición fija en Y donde se escribe
+# x_min, x_max = -0.5, 1.5  # Límites en X (ajustar según sea necesario)
+# z_min, z_max = 0.5, 1.2   # Límites en Z
 
 # Crear los vértices del plano
-X, Z = np.meshgrid([x_min, x_max], [z_min, z_max])
-Y = np.ones_like(X) * y_plane
-ax.plot_surface(X, Y, Z, alpha=0.2, color='gray')
+# X, Z = np.meshgrid([x_min, x_max], [z_min, z_max])
+# Y = np.ones_like(X) * y_plane
+# ax.plot_surface(X, Y, Z, alpha=0.2, color='gray')
 
 # Recorrer la trayectoria y actualizar la visualización
 line_obj = None
