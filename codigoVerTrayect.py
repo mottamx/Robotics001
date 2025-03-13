@@ -161,17 +161,17 @@ def plot_robot_trajectory(robot, q_trajectory, limits=None, eeframe=True, jointa
 #p_lim=[-1, 1, -1, 1, -0.15, 1.5]
 #robot.plot(q=qtraj, limits=p_lim, eeframe=True, jointaxes=False, shadow=True ,backend='pyplot', block=True, dt=0.15)
 #Ahora
-p_lim=[-1, 1, -1, 1, -0.15, 1.5]
-plot_robot_trajectory(
-    robot=robot,
-    q_trajectory=qtraj,
-    limits=p_lim,
-    eeframe=True,
-    jointaxes=False,
-    shadow=True,
-    drawing_mode='continuous',  # o 'segments' si prefieres
-    traj_color='r',             # Color de la trayectoria completa
-    drawing_color='b',          # Color del trazo principal
-    dt=0.15,
-    block=True
-)
+# p_lim=[-1, 1, -1, 1, -0.15, 1.5]
+# plot_robot_trajectory(
+#     robot=robot,
+#     q_trajectory=qtraj,
+#     limits=p_lim,
+#     eeframe=True,
+#     jointaxes=False,
+#     shadow=True,
+#     drawing_mode='continuous',  # o 'segments' si prefieres
+#     traj_color='r',             # Color de la trayectoria completa
+#     drawing_color='b',          # Color del trazo principal
+#     dt=0.15,
+#     block=True
+# )
