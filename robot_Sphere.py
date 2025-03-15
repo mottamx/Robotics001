@@ -18,12 +18,11 @@ robot=rtb.DHRobot(
         rtb.RevoluteDH(d=0.620, a=0.0, alpha=-np.pi/2, qlim=[np.deg2rad(-165), np.deg2rad(165)]),
         rtb.RevoluteDH(d=0.0, a=0.0, alpha=np.pi/2, qlim=[np.deg2rad(-140), np.deg2rad(140)]),
         rtb.RevoluteDH(d=0.115, a=0.0, alpha=0, qlim=[np.deg2rad(-360), np.deg2rad(360)]),
-    ], name="Kuka KR5", base=SE3(0,0,0))
+    ], name="KR5", manufacturer="Kuka", base=SE3(0,0,0))
 
 # Ponemos el TCP alineado con el brazo
 robot.tool = SE3.OA([0, 1, 0], [0, 0, 1])
 robot.qz = [np.deg2rad(0.0), np.deg2rad(0.0), np.deg2rad(0.0), np.deg2rad(0.0), np.deg2rad(0.0), np.deg2rad(0.0)]  # Valores el cero
-robot.qhome=[np.deg2rad(0.0), np.deg2rad(45.0), np.deg2rad(90.0), np.deg2rad(0.0), np.deg2rad(45.0), np.deg2rad(0.0)]  # Valores el cero
 
 # Verificar que quedo igual el DH
 print(robot)
@@ -35,7 +34,9 @@ backend = PyPlot()
 backend.launch()
 
 # Añadir el robot al gráfico
-backend.add(robot, robot.qhome)
+backend.add(robot)
+robot.q=[np.deg2rad(0), np.deg2rad(0), np.deg2rad(0), np.deg2rad(0), np.deg2rad(0), np.deg2rad(0.0)]
+backend.step()
 
 # Obtener el eje para añadir elementos adicionales
 ax = backend.ax
@@ -60,8 +61,6 @@ ax.set_xlim([-radio-0.2, radio+0.2])
 ax.set_ylim([-radio-0.2, radio+0.2])
 ax.set_zlim([0, 2*radio])
 
-# Actualizar el gráfico
+# Actualizar el gráfico y mantener la figura abierta
 backend.step()
-
-# Mantener la figura abierta
 backend.hold()

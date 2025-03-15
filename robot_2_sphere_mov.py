@@ -77,11 +77,48 @@ base_pos2 = robot2.base.t.tolist()
 dibujar_esfera(ax, base_pos1, radio, color='r', alpha=0.1)  # Esfera roja para el primer robot
 dibujar_esfera(ax, base_pos2, radio, color='g', alpha=0.1)  # Esfera verde para el segundo robot
 
-# Actualizar los límites del gráfico para asegurar que se vean ambos robots y sus esferas
-ax.set_xlim([-radio-0.2, radio+0.2])
-ax.set_ylim([-radio-0.2, distancia+radio+0.2])
-ax.set_zlim([0, 2*radio])
+Pos1 = np.array([
+    [np.deg2rad(-30), 0, 0, 0, 0, 0],
+    [np.deg2rad(-30), np.deg2rad(15), 0, 0, 0, 0],
+    [np.deg2rad(-30), np.deg2rad(0), 0, 0, 0, 0],
+    [np.deg2rad(30), np.deg2rad(0), 0, 0, 0, 0],
+    [np.deg2rad(30), np.deg2rad(-15), 0, 0, 0, 0],
+    [np.deg2rad(-30), 0, 0, 0, 0, 0]
+])
 
-# Actualizar el gráfico y mantener la figura abierta
-backend.step()
+Pos2 = np.array([
+    [np.deg2rad(30), np.deg2rad(0), 0, 0, 0, 0],
+    [np.deg2rad(30), np.deg2rad(-15), 0, 0, 0, 0],
+    [np.deg2rad(-30), 0, 0, 0, 0, 0],
+    [np.deg2rad(-30), np.deg2rad(15), 0, 0, 0, 0],
+    [np.deg2rad(-30), np.deg2rad(0), 0, 0, 0, 0],
+    [np.deg2rad(30), np.deg2rad(0), 0, 0, 0, 0]
+])
+
+
+# Configurar la animación en loop infinito
+from itertools import cycle
+import time
+
+# Convertir las posiciones en ciclos infinitos
+ciclo_pos1 = cycle(Pos1)
+ciclo_pos2 = cycle(Pos2)
+
+try:
+    i = 0
+    while True:
+        robot1.q = Pos1[i % len(Pos1)]
+        robot2.q = Pos2[i % len(Pos2)]
+        i += 1
+
+        # Actualizar visualización
+        backend.step()
+        plt.pause(0.5)  # Controlar velocidad de actualización
+
+except KeyboardInterrupt:
+    print("\nAnimación detenida por el usuario")
+
+# Mantener la figura abierta al final
+backend.hold()
+# Mantener la figura abierta al final
 backend.hold()
